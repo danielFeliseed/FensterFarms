@@ -51,7 +51,7 @@
   <h1 class="text-4xl font-semibold text-shadow bg-transparent">
     Welcome to Fenster Farms!
   </h1>
-  <a class="border-2 p-2 text-md font-semibold rounded-md" href="https://www.youtube.com/@FensterfarmGreenhouse">
+  <a class="border-2 p-1 font-semibold rounded-md min-h-fit min-w-fit whitespace-nowrap" href="https://www.youtube.com/@FensterfarmGreenhouse">
     Our Youtube Channel </a>
 </header>
 
