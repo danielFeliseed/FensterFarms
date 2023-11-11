@@ -1,6 +1,8 @@
 <script>
   // import { Carousel } from 'flowbite-svelte';
   import { onMount  } from "svelte";
+  import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
+  import { faYoutube } from "@fortawesome/free-brands-svg-icons";
   let images = [
     "Lettuce.pic1.webp",
     "lettuce.pic2.webp",
@@ -45,10 +47,12 @@
     <button class="carousel-button" on:click={nextImage}>&gt;</button>
   </div>
 </div>
-<header class="bg-green-600 text-white p-6 text-center shadow-lg">
+<header class="bg-green-600 text-white p-6 text-center shadow-lg flex justify-between">
   <h1 class="text-4xl font-semibold text-shadow bg-transparent">
     Welcome to Fenster Farms!
   </h1>
+  <a class="border-2 p-2 text-md font-semibold rounded-md" href="https://www.youtube.com/@FensterfarmGreenhouse">
+    Our Youtube Channel </a>
 </header>
 
 <main class="container mx-auto my-10 px-6">
@@ -127,12 +131,7 @@
         </tr>
       </thead>
       <tbody class="text-gray-700">
-        <tr>
-          <td class="border px-6 py-4">Cooper Young Market</td>
-
-          <td class="border px-6 py-4">1000 Cooper St, Memphis, TN</td>
-          <td class="border px-6 py-4">8:00 AM - 1:00 PM</td>
-        </tr>
+     
 
         <tr class="bg-gray-100">
           <td class="border px-6 py-4">Agricenter Market</td>
@@ -201,9 +200,9 @@
     </div>
 </div> -->
 
-<!-- <footer class="bg-gray-900 text-white text-center p-6 mt-12">
+<footer class="bg-gray-900 text-white text-center p-6 mt-12">
   <p>&copy; 2023 Fenster Farms. All rights reserved.</p>
-</footer> -->
+</footer>
 
 <style>
   .background-img {
