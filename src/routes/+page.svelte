@@ -1,8 +1,8 @@
 <script>
   // import { Carousel } from 'flowbite-svelte';
-  import { onMount  } from "svelte";
-  import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
-  import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+//   import { onMount  } from "svelte";
+//   import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
+//   import { faYoutube } from "@fortawesome/free-brands-svg-icons";
   let images = [
     "Lettuce.pic1.webp",
     "lettuce.pic2.webp",
@@ -10,24 +10,24 @@
     "lettuce.pic4.webp",
   ];
 
-  let currentImage = 0;
-  let interval;
+//   let currentImage = 0;
+//   let interval;
 
-  function nextImage() {
-    currentImage = (currentImage + 1) % images.length;
-  }
+//   function nextImage() {
+//     currentImage = (currentImage + 1) % images.length;
+//   }
 
-  function previousImage() {
-    currentImage = (currentImage - 1 + images.length) % images.length;
-  }
+//   function previousImage() {
+//     currentImage = (currentImage - 1 + images.length) % images.length;
+//   }
 
-  onMount(() => {
-    interval = setInterval(nextImage, 3000); // Change image every 3000 milliseconds (3 seconds)
+//   onMount(() => {
+//     interval = setInterval(nextImage, 3000); // Change image every 3000 milliseconds (3 seconds)
 
-    return () => {
-      clearInterval(interval); // Clear the interval when the component is destroyed
-    };
-  });
+//     return () => {
+//       clearInterval(interval); // Clear the interval when the component is destroyed
+//     };
+//   });
 </script>
 
 <link
@@ -39,14 +39,14 @@
     <img class="background-img" src=/Lettuce.jpg alt="Lettuce" />
 </div>
 
-<div class="carousel carousel-img transition">
+<!-- <div class="carousel carousel-img transition">
   <img class="carousel-img transition" src={images[currentImage]} alt={`Image ${currentImage + 1}`} />
 
   <div class="carousel-buttons">
     <button class="carousel-button" on:click={previousImage}>&lt;</button>
     <button class="carousel-button" on:click={nextImage}>&gt;</button>
   </div>
-</div>
+</div> -->
 <header class="bg-green-600 text-white p-6 text-center shadow-lg flex justify-between">
   <h1 class="text-4xl font-semibold text-shadow bg-transparent">
     Welcome to Fenster Farms!
@@ -64,43 +64,43 @@
     </h2>
     <p class="text-xl font-semibold text-white text-center mb-8 text-shadow">
       At Fenster Farm we grow differently. Hydroponics is our method for
-      growing...
+      growing.
     </p>
     <div
-      class="bg-white rounded-lg p-6 mx-auto text-center max-w-2xl transition duration-300 ease-in-out hover:shadow-2xl"
+      class="custom-bg rounded-lg p-6 text-center max-w-2xl transition duration-300 ease-in-out hover:shadow-2xl"
     >
-      <h3 class="text-2xl font-semibold mb-4">Advantages of Hydroponics</h3>
+      <h3 class="text-2xl font-semibold mb-4 text-white">Advantages of Hydroponics</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
         <div>
-          <h4 class="font-semibold text-xl mb-2">Reduce labor</h4>
-          <p>
+          <h4 class="font-bold text-2xl mb-2 text-white">Reduce labor</h4>
+          <p class="text-white">
             Hydroponic systems require no tilling, weeding, heavy-lifting, or
-            extensive stooping and kneeling...
+            extensive stooping and kneeling.
           </p>
         </div>
 
         <div>
-          <h4 class="font-semibold text-xl mb-2">Reduce water</h4>
-          <p>
+          <h4 class="font-bold text-2xl mb-2 text-white">Reduce water</h4>
+          <p class="text-white">
             Hydroponic systems use significantly less water than soil-based
             farming and allow you to recycle the water you give to your
-            plants...
+            plants.
           </p>
         </div>
         <div>
-          <h4 class="font-semibold text-xl mb-2">Protect Year-Round</h4>
-          <p>
+          <h4 class="font-bold text-2xl mb-2 text-white">Protect Year-Round</h4>
+          <p class="text-white">
             Food is typically vulnerable to extreme weather and pests.
             Hydroponic systems can be set up indoors, away from harmful
-            elements...
+            elements.
           </p>
         </div>
         <div>
-          <h4 class="font-semibold text-xl mb-2">Harvest consistently</h4>
-          <p>
+          <h4 class="font-bold text-2xl mb-2 text-white">Harvest consistently</h4>
+          <p class="text-white">
             With plants safe from pests and elements, hydroponic systems allow
             growers to grow and harvest consistently, regardless of
-            seasonality...
+            seasonality.
           </p>
         </div>
       </div>
@@ -266,4 +266,8 @@
     padding: 10px;
     cursor: pointer;
   }
+
+  .custom-bg {
+    background-color: rgba(128, 128, 128, 0.5); /* Grey with 50% opacity */
+}
 </style>
