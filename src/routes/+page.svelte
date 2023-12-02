@@ -86,7 +86,30 @@
     },
   ];
 
-  
+  function activateToast(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    showToast = true;
+    setTimeout(() => {
+      showToast = false;
+    }, 3000);
+
+  const form = event.target;
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Form submission was successful
+          console.log('Form submitted successfully');
+        } else {
+          // Form submission failed
+          console.error('Form submission failed');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      }); 
 
   const toggleRow = (i) => {
     openRow = openRow === i ? null : i;
@@ -98,6 +121,7 @@
       showToast = false;
     }, 3000);
   }
+}
 </script>
 
 <link
