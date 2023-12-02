@@ -434,22 +434,7 @@
         ></Textarea>
         
         <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!">
-        <Toolbar slot="header" embedded>
-          <ToolbarGroup>
-            <ToolbarButton name="Attach file"
-              ><PaperClipOutline class="w-5 h-5 rotate-45" /></ToolbarButton
-            >
-    
-            <ToolbarButton name="Upload image"
-              ><ImageOutline class="w-5 h-5" /></ToolbarButton
-            >
-          </ToolbarGroup>
-          <ToolbarGroup>
-            <ToolbarButton name="Add emoji"
-              ><FaceGrinOutline class="w-5 h-5" /></ToolbarButton
-            >
-          </ToolbarGroup>
-        </Toolbar>
+        
       </div>
     
       <Button type="submit" on:submit={activateToast} color="light">Send</Button>
