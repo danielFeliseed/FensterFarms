@@ -45,9 +45,12 @@
   import { DarkMode } from 'flowbite-svelte';
   import { Toast } from 'flowbite-svelte';
 
-  let openRow;
-  let details;
+  let openRow = null;
+  let details = null;
   let showToast = false;
+  const toggleRow = (i) => {
+    openRow = openRow === i ? null : i;
+  };
   const items = [
     {
       market: "Agricenter Farmers Market",
@@ -86,6 +89,7 @@
     },
   ];
 
+
   function activateToast(event) {
     event.preventDefault(); // Prevent the default form submission behavior
     showToast = true;
@@ -110,18 +114,14 @@
       .catch((error) => {
         console.error('Error:', error);
       }); 
+    }
+  
 
-  const toggleRow = (i) => {
-    openRow = openRow === i ? null : i;
-  };
+  
+  
 
-  function activateToast() {
-    showToast = true;
-    setTimeout(() => {
-      showToast = false;
-    }, 3000);
-  }
-}
+  
+
 </script>
 
 <link
@@ -381,7 +381,9 @@
                   local produce to the Memphis community.
                 </div>
               </div>
+              
             </TableBodyCell>
+
           </TableBodyRow>
         {/if}
       {/each}
@@ -409,7 +411,7 @@
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your name</Label>
         <input type="hidden" name="_subject" value="Fenster Farm Inquiry">
-        <Input id="name" name=name type="text" placeholder="John Smith"></Input>
+        <Input id="name" name=n type="text" placeholder="John Smith"></Input>
       </div>
     
       <div class="mb-6">
@@ -433,7 +435,7 @@
           required
         ></Textarea>
         
-        <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!">
+        <!-- <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!"> -->
         
       </div>
     
@@ -475,15 +477,7 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
     line-height: 1.6;
   }
-  .text-2xl {
-    font-family: "Amatic SC", cursive;
-    /* or 'Tangerine', cursive; */
-    /* or 'Patrick Hand', cursive; */
-    /* or 'Caveat', cursive; */
-    font-size: 48px;
-    line-height: 1.6;
-    color: #333;
-  }
+
   .text-md {
     font-family: "Amatic SC", cursive;
     /* or 'Tangerine', cursive; */
