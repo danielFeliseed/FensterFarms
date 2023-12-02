@@ -409,12 +409,12 @@
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your name</Label>
         <input type="hidden" name="_subject" value="Fenster Farm Inquiry">
-        <Input id="name" type="text" placeholder="John Smith"></Input>
+        <Input id="name" name=name type="text" placeholder="John Smith"></Input>
       </div>
     
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your Email</Label>
-        <Input id="email" type="email" placeholder="JohnSmith@gmail.com" required>
+        <Input id="email" name="email" type="email" placeholder="JohnSmith@gmail.com" required>
           <EnvelopeSolid
             slot="left"
             class="w-5 h-5 text-gray-500 dark:text-gray-400"
