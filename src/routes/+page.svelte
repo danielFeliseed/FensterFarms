@@ -151,7 +151,7 @@
   <div class="overflow-scroll pb-16">
     <div class="mt-28 mb-5">
       <h1 class="text-lg sm:text-3xl font-bold text-center text-white text-shadow">
-        Fenster Farms
+        Fenster Farm
       </h1>
       <h2 class="text-lg sm:text-2xl font-semibold text-center text-white text-shadow">
         Fresh, Local Produce
