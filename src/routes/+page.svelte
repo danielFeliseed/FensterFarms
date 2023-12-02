@@ -388,7 +388,7 @@
     
       </div>
 
-      <form>
+      <div class="mb-6">
         <label for="editor" class="sr-only"></label>
         <Textarea
           id="text"
@@ -417,7 +417,7 @@
         </Textarea>
         <Button type="submit" on:submit={() => alert='Thank you for your email'} color="light">Send</Button>
       </form>
-    </form>
+    </div>
   </section>
 </main>
 
