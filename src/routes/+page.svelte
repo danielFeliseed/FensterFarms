@@ -43,7 +43,11 @@
   import { Video } from "flowbite-svelte";
   import { Tooltip } from "flowbite-svelte";
   import { DarkMode } from 'flowbite-svelte';
+  import { Toast } from 'flowbite-svelte';
 
+  let openRow;
+  let details;
+  let showToast = false;
   const items = [
     {
       market: "Agricenter Farmers Market",
@@ -82,12 +86,18 @@
     },
   ];
 
-  let openRow;
-  let details;
+  
 
   const toggleRow = (i) => {
     openRow = openRow === i ? null : i;
   };
+
+  function activateToast() {
+    showToast = true;
+    setTimeout(() => {
+      showToast = false;
+    }, 3000);
+  }
 </script>
 
 <link
@@ -386,6 +396,7 @@
             class="w-5 h-5 text-gray-500 dark:text-gray-400"
           />
         </Input>
+        <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!">
     
       </div>
 
@@ -416,8 +427,14 @@
             </ToolbarGroup>
           </Toolbar>
         </Textarea>
-        <Button type="submit" on:submit={() => alert='Thank you for your email'} color="light">Send</Button>
+        <Button type="submit" on:submit= {activateToast} color="light">Send</Button>
+        <input type="hidden" name="_next" value="/">
       </form>
+      {#if showToast}
+      <Toast dismissable={false} contentClass="flex space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
+        <div class="pl-4 text-sm font-normal">Message sent successfully.</div>
+      </Toast>
+      {/if}
     
   </section>
 </main>
