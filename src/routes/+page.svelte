@@ -409,7 +409,7 @@
       <div class="mb-4" />
     
       <div class="mb-6">
-        <Label for="input-group-1" class="block mb-2">Your name</Label>
+        <Label for="input-group-1" class="block mb-2">Your Name</Label>
         <input type="hidden" name="_subject" value="Fenster Farm Inquiry">
         <Input id="name" name=n type="text" placeholder="John Smith"></Input>
       </div>
