@@ -405,13 +405,13 @@
     <form action="https://formsubmit.co/dfbusinessjp@gmail.com" method="post" class="max-w-lg mx-auto">
       <input type="hidden" name="_captcha" value="false">
       <div class="mb-4" />
-
+    
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your name</Label>
         <input type="hidden" name="_subject" value="Fenster Farm Inquiry">
         <Input id="name" type="text" placeholder="John Smith"></Input>
       </div>
-
+    
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your Email</Label>
         <Input id="email" type="email" placeholder="JohnSmith@gmail.com" required>
@@ -420,10 +420,8 @@
             class="w-5 h-5 text-gray-500 dark:text-gray-400"
           />
         </Input>
-        
-    
       </div>
-
+    
       <div class="mb-6">
         <label for="editor" class="sr-only"></label>
         <Textarea
@@ -433,27 +431,29 @@
           class="mb-4 border-2"
           placeholder="Write a comment"
           required
-        >
+        ></Textarea>
+        
         <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!">
-          <Toolbar slot="header" embedded>
-            <ToolbarGroup>
-              <ToolbarButton name="Attach file"
-                ><PaperClipOutline class="w-5 h-5 rotate-45" /></ToolbarButton
-              >
-
-              <ToolbarButton name="Upload image"
-                ><ImageOutline class="w-5 h-5" /></ToolbarButton
-              >
-            </ToolbarGroup>
-            <ToolbarGroup>
-              <ToolbarButton name="Add emoji"
-                ><FaceGrinOutline class="w-5 h-5" /></ToolbarButton
-              >
-            </ToolbarGroup>
-          </Toolbar>
-        </Textarea>
-        <Button type="submit" on:submit= {activateToast} color="light">Send</Button>
-      </form>
+        <Toolbar slot="header" embedded>
+          <ToolbarGroup>
+            <ToolbarButton name="Attach file"
+              ><PaperClipOutline class="w-5 h-5 rotate-45" /></ToolbarButton
+            >
+    
+            <ToolbarButton name="Upload image"
+              ><ImageOutline class="w-5 h-5" /></ToolbarButton
+            >
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <ToolbarButton name="Add emoji"
+              ><FaceGrinOutline class="w-5 h-5" /></ToolbarButton
+            >
+          </ToolbarGroup>
+        </Toolbar>
+      </div>
+    
+      <Button type="submit" on:submit={activateToast} color="light">Send</Button>
+    </form>
       {#if showToast}
       <Toast dismissable={false} contentClass="flex space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
         <div class="pl-4 text-sm font-normal">Message sent successfully.</div>
