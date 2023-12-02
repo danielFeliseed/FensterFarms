@@ -95,44 +95,44 @@
   rel="stylesheet"
 />
 
-<div class="w-275px] xsm:w-full relative px-1 xsm:px-8 bg-whitesmoke">
-  <Navbar class="px-2 sm:px-4 py-2.5 w-[400px] ml-3 fixed xsm:w-full z-20 top-0 left-0 border-b">
+<div class="w-[425px] sm:w-full relative px-1 sm:px-8 bg-whitesmoke">
+  <Navbar class="px-2 sm:px-4 py-2.5 w-[400px] ml-3 fixed sm:w-full z-20 top-0 left-0 border-b">
     <NavBrand href="/">
       <span
-        class="self-center whitespace-nowrap text-lg xsm:text-3xl font-semibold dark:text-white"
+        class="self-center whitespace-nowrap text-lg sm:text-3xl font-semibold dark:text-white"
         >Fenster Farms</span
       >
     </NavBrand>
     <NavHamburger />
     <NavUl>
-      <NavLi class="text-sm xsm:text-xl" href="/" active={true}>Home</NavLi>
-      <NavLi class="text-sm xsm:text-xl" href="#about">About</NavLi>
-      <NavLi class="text-sm xsm:text-xl" href="#testimonials">Customer Testimonials</NavLi>
-      <NavLi class="text-sm xsm:text-xl" href="#marketinfo">Market Info</NavLi>
-      <NavLi class="text-sm xsm:text-xl" href="#contact">Contact</NavLi>
+      <NavLi class="text-sm sm:text-xl" href="/" active={true}>Home</NavLi>
+      <NavLi class="text-sm sm:text-xl" href="#about">About</NavLi>
+      <NavLi class="text-sm sm:text-xl" href="#testimonials">Customer Testimonials</NavLi>
+      <NavLi class="text-sm sm:text-xl" href="#marketinfo">Market Info</NavLi>
+      <NavLi class="text-sm sm:text-xl" href="#contact">Contact</NavLi>
       <DarkMode />
     </NavUl>
   </Navbar>
   <div></div>
   <div class="overflow-scroll pb-16">
     <div class="mt-28 mb-5">
-      <h1 class="text-lg xsm:text-2xl font-bold text-center text-white text-shadow">
+      <h1 class="text-lg sm:text-3xl font-bold text-center text-white text-shadow">
         Fenster Farms
       </h1>
-      <h2 class="text-lg xsm:text-2xl font-semibold text-center text-white text-shadow">
+      <h2 class="text-lg sm:text-2xl font-semibold text-center text-white text-shadow">
         Fresh, Local Produce
       </h2>
     </div>
-    <div class="flex-col xsm:flex justify-between">
-      <div class="w-3/4 ml-12 xsm:w-2/5 ml-16">
-        <Carousel {images} duration="3000" />
-        <div class="text-center mt-3 text-md xsm:text-xl">
+    <div class="flex-col sm:flex sm:flex-row justify-between">
+      <div class="w-3/4 ml-12 sm:w-2/5 sm:ml-16">
+        <Carousel class="shadow-2xl" {images} duration="3000" />
+        <div class="text-center mt-3 text-md sm:text-2xl">
           All of our lettuce is grown hydroponically in our greenhouse. <br />
         </div>
       </div>
-      <div class=" h-full ml-9 pl-0 w-5/6 xsm:ml-0 xsm:w-2/5 hover:shadow-xl mt-5 xsm:pl-7">
-        <Video src="/Fensterfarm.video.mp4" controls trackSrc="flowbite.mp4" />
-        <div class="mt-3 text-md xsm:text-xl text-center">Here is a tour of our farm</div>
+      <div class=" h-full ml-9 pl-0 w-5/6 sm:ml-0 sm:w-2/5 sm:mr-12 hover:shadow-xl mt-3">
+        <Video class="border rounded-xl shadow-2xl" src="/Fensterfarm.video.mp4" controls trackSrc="flowbite.mp4" />
+        <div class="mt-3 text-md sm:text-xl text-center">Here is a tour of our farm</div>
       </div>
     </div>
 
@@ -140,7 +140,7 @@
     <Card
       padding="none"
       size="xl"
-      class="grid md:grid-cols-2 xsm:ml-72 mt-8"
+      class="grid md:grid-cols-2 sm:ml-12 mt-8"
       id="testimonials"
     >
     
@@ -154,7 +154,7 @@
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
             "Will never go back to store bought lettuce"
           </h3>
-          <p class="my-4 font-light xsm:ml-8">
+          <p class="my-4 font-light sm:ml-8">
             "This is the best lettuce I have ever tasted in my life Love it!!"
           </p>
         </blockquote>
@@ -175,7 +175,7 @@
         <blockquote
           class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white xsm:ml-32">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white sm:ml-32">
             "Lasted longer than I thought"
           </h3>
           <p class="my-4 font-light">
@@ -257,14 +257,14 @@
   <section>
     <div
       id="about"
-      class="custom-bg rounded-lg p-6 text-center max-w-2xl transition duration-300 ease-in-out hover:shadow-2xl xsm:ml-96 mb-12"
+      class="custom-bg rounded-lg p-6 text-center sm:max-w-4xl transition duration-300 ease-in-out hover:shadow-2xl sm:ml-40 mb-12"
     >
-      <h3 class=" text-lg xsm:text-2xl font-semibold mb-4 text-white">
+      <h3 class=" text-lg sm:text-2xl font-semibold mb-4 text-white">
         Advantages of Hydroponics
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
         <div>
-          <h4 class="font-bold text-lg text-center xsm:text-left xsm:text-2xl mb-2 text-white">Reduce labor</h4>
+          <h4 class="font-bold text-lg text-center  sm:text-xl mb-2 text-white">Reduce labor</h4>
           <p class="text-white">
             Hydroponic systems require no tilling, weeding, heavy-lifting, or
             extensive stooping and kneeling.
@@ -272,14 +272,14 @@
         </div>
 
         <div>
-          <h4 class="font-bold text-lg text-center xsm:text-left xsm:text-2xl mb-2 text-white">Reduce water</h4>
+          <h4 class="font-bold text-lg text-center  sm:text-2xl mb-2 text-white">Reduce water</h4>
           <p class="text-white">
             Hydroponic systems use significantly less water than soil-based
             farming and allow you to recycle the water you give to your plants.
           </p>
         </div>
         <div>
-          <h4 class="font-bold text-lg text-center xsm:text-left xsm:text-2xl mb-2 text-white">Protect Year-Round</h4>
+          <h4 class="font-bold text-lg text-center sm:text-2xl mb-2 text-white">Protect Year-Round</h4>
           <p class="text-white">
             Food is typically vulnerable to extreme weather and pests.
             Hydroponic systems can be set up indoors, away from harmful
@@ -287,7 +287,7 @@
           </p>
         </div>
         <div>
-          <h4 class="font-bold text-lg text-center xsm:text-left xsm:text-2xl mb-2 text-white">
+          <h4 class="font-bold text-lg text-center sm:text-2xl mb-2 text-white">
             Harvest consistently
           </h4>
           <p class="text-white">
@@ -301,10 +301,10 @@
 
   <Table id="marketinfo" class="w-full overflow-x-auto">
     <TableHead >
-      <TableHeadCell class=" xsm:p-8 xsm:text-xl">Market</TableHeadCell>
-      <TableHeadCell class="xsm:p-8 xsm:text-xl">Time</TableHeadCell>
-      <TableHeadCell class="xsm:p-8 xsm:text-xl">Location</TableHeadCell>
-      <TableHeadCell class="xsm:p-8 xsm:text-xl">What we are selling</TableHeadCell>
+      <TableHeadCell class=" sm:p-8 sm:text-xl">Market</TableHeadCell>
+      <TableHeadCell class="sm:p-8 sm:text-xl">Time</TableHeadCell>
+      <TableHeadCell class="sm:p-8 sm:text-xl">Location</TableHeadCell>
+      <TableHeadCell class="sm:p-8 sm:text-xl">What we are selling</TableHeadCell>
     </TableHead>
     <TableBody class="divide-y">
       {#each items as item, i}
@@ -328,16 +328,16 @@
           <TableBodyRow on:dblclick={() => (details = item)}>
             <TableBodyCell colspan="4" class="p-0">
               <div
-                class="xsm:px-2 py-3 xsm:flex flex-col-2"
+                class="sm:px-2 py-3 sm:flex flex-col-2"
                 transition:slide={{ duration: 300, axis: "y" }}
               >
                 <Img
                   src="/Dadlettuce.jpeg"
                   alt="sample 1"
-                  size="w-36 xsm:max-w-lg"
+                  size="w-36 sm:w-1/3"
                   class="rounded-lg"
                 />
-                <div class="pl-1 xsm:pl-5 xsm:text-xl whitespace-normal text-center">
+                <div class="pl-1 sm:pl-5 sm:text-xl whitespace-normal text-center">
                   At the Agricenter Farmers Market, we will be selling living
                   lettuce, basil, and microgreens. <br />
                   All the lettuce is grown hydroponically in our greenhouse.
@@ -444,12 +444,21 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
     line-height: 1.6;
   }
+  .text-2xl {
+    font-family: "Amatic SC", cursive;
+    /* or 'Tangerine', cursive; */
+    /* or 'Patrick Hand', cursive; */
+    /* or 'Caveat', cursive; */
+    font-size: 48px;
+    line-height: 1.6;
+    color: #333;
+  }
   .text-md {
     font-family: "Amatic SC", cursive;
     /* or 'Tangerine', cursive; */
     /* or 'Patrick Hand', cursive; */
     /* or 'Caveat', cursive; */
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1.6;
     color: #333;
     
@@ -463,20 +472,14 @@
     line-height: 1.6;
    
   }
-  .text-2xl {
-    font-family: "Amatic SC", cursive;
-    /* or 'Tangerine', cursive; */
-    /* or 'Patrick Hand', cursive; */
-    /* or 'Caveat', cursive; */
-    font-size: 48px;
-    line-height: 1.6;
-  }
+
+  
   .text-3xl {
     font-family: "Amatic SC", cursive;
     /* or 'Tangerine', cursive; */
     /* or 'Patrick Hand', cursive; */
     /* or 'Caveat', cursive; */
-    font-size: 60px;
+   
     line-height: 1.6;
     color: #333;
     
