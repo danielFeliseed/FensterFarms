@@ -368,31 +368,35 @@
     <h2 class="text-xl font-semibold mb-4 text-white" id="contact">
       Contact Us
     </h2>
-    <form action="/submit-form" method="post" class="max-w-lg mx-auto">
+    <form action="https://formsubmit.co/dfbusinessjp@gmail.com" method="post" class="max-w-lg mx-auto">
       <div class="mb-4" />
 
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your name</Label>
+        <input type="hidden" name="_subject" value="Fenster Farm Inquiry">
         <Input id="name" type="text" placeholder="John Smith"></Input>
       </div>
 
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your Email</Label>
-        <Input id="email" type="email" placeholder="JohnSmith@gmail.com">
+        <Input id="email" type="email" placeholder="JohnSmith@gmail.com" required>
           <EnvelopeSolid
             slot="left"
             class="w-5 h-5 text-gray-500 dark:text-gray-400"
           />
         </Input>
+    
       </div>
 
       <form>
         <label for="editor" class="sr-only"></label>
         <Textarea
-          id="editor"
+          id="text"
+          name="message"
           rows="8"
           class="mb-4 border-2"
           placeholder="Write a comment"
+          required
         >
           <Toolbar slot="header" embedded>
             <ToolbarGroup>
@@ -411,7 +415,7 @@
             </ToolbarGroup>
           </Toolbar>
         </Textarea>
-        <Button color="light">Send</Button>
+        <Button type="submit" on:submit={() => alert='Thank you for your email'} color="light">Send</Button>
       </form>
     </form>
   </section>
