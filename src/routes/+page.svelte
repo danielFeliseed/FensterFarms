@@ -1,33 +1,77 @@
 <script>
-  // import { Carousel } from 'flowbite-svelte';
-//   import { onMount  } from "svelte";
-//   import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
-//   import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-  let images = [
-    "Lettuce.pic1.webp",
-    "lettuce.pic2.webp",
-    "lettuce.pic3.webp",
-    "lettuce.pic4.webp",
+
+import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, ImagePlaceholder, Skeleton, TextPlaceholder } from 'flowbite-svelte';
+import { Label, Input, ButtonGroup } from 'flowbite-svelte';
+import { EnvelopeSolid } from 'flowbite-svelte-icons';
+import { Textarea, Toolbar, ToolbarGroup, ToolbarButton, Button } from 'flowbite-svelte';
+  import { PaperClipOutline, MapPinAltSolid, ImageOutline, CodeOutline, FaceGrinOutline, PapperPlaneOutline } from 'flowbite-svelte-icons';
+  import {
+    Table,
+    TableBody,
+    TableBodyCell,
+    TableBodyRow,
+    TableHead,
+    TableHeadCell,
+    Modal,
+  } from 'flowbite-svelte';
+  import { slide } from 'svelte/transition';
+  import { Img } from 'flowbite-svelte';
+  import {Carousel} from 'flowbite-svelte';
+  import { Card } from 'flowbite-svelte';
+  import { Tabs, TabItem } from 'flowbite-svelte';
+  import { Video } from 'flowbite-svelte';
+  import {Tooltip} from 'flowbite-svelte';
+  // import { images } from './+page.ts';
+
+
+
+
+
+  const items = [
+    {
+      market: 'Agricenter Farmers Market',
+      time: "8:00am - 1:00pm",
+      location: "123 Main St, Memphis, TN 38111",
+      goods: "Living lettuce, basil, and microgreens",
+      details: "Join us at the Agricenter Farmers Market for fresh produce and more. We will be selling living lettuce, basil, and microgreens."
+    }
+  ];
+  const images = [
+    {
+      src: '/Lettuce.jpg',
+      alt: 'Lettuce',
+      caption: 'Lettuce',
+    },
+    {
+      src: '/Lettuce.pic1.webp',
+      alt: 'Basil',
+      caption: 'Basil',
+    },
+    {
+      src: '/lettuce.pic2.webp',
+      alt: 'Microgreens',
+      caption: 'Microgreens',
+    },
+    {
+      src: '/lettuce.pic3.webp',
+      alt: 'Microgreens',
+      caption: 'Microgreens',
+    },{
+      src: '/lettuce.pic4.webp',
+      alt: 'Microgreens',
+      caption: 'Microgreens',
+    },
+
   ];
 
-//   let currentImage = 0;
-//   let interval;
+  let openRow
+  let details
 
-//   function nextImage() {
-//     currentImage = (currentImage + 1) % images.length;
-//   }
+  const toggleRow = (i) => {
+    openRow = openRow === i ? null : i
+  }
 
-//   function previousImage() {
-//     currentImage = (currentImage - 1 + images.length) % images.length;
-//   }
 
-//   onMount(() => {
-//     interval = setInterval(nextImage, 3000); // Change image every 3000 milliseconds (3 seconds)
-
-//     return () => {
-//       clearInterval(interval); // Clear the interval when the component is destroyed
-//     };
-//   });
 </script>
 
 <link
@@ -35,39 +79,119 @@
   rel="stylesheet"
 />
 
-<div>
-    <img class="background-img" src=/Lettuce.jpg alt="Lettuce" />
+
+<div class="relative px-8 bg-whitesmoke">
+  <Navbar class="px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b">
+    <NavBrand href="/">
+     
+      <span class="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">Fenster Farms</span>
+    </NavBrand>
+    <NavHamburger />
+    <NavUl>
+      <NavLi class="text-xl" href="/" active={true}>Home</NavLi>
+      <NavLi class="text-xl" href="#about">About</NavLi>
+      <NavLi class="text-xl" href="#testimonials">Customer Testimonials</NavLi>
+      <NavLi class="text-xl" href="#marketinfo">Market Info</NavLi>
+      <NavLi class="text-xl" href="#contact">Contact</NavLi>
+    </NavUl>
+  </Navbar>
+  <div></div>
+  <div style="height:800px;" class="overflow-scroll pb-16">
+    <div class="mt-28 mb-5">
+      <h1 class="text-2xl font-bold text-center text-white text-shadow">
+        Fenster Farms
+      </h1>
+      <h2 class="text-2xl font-semibold text-center text-white text-shadow">
+        Fresh, Local Produce
+      </h2>
+  </div> 
+  <div class="flex justify-between">
+    <div class="w-2/5 ml-16">
+      
+      <Carousel {images} duration="3000" />
+      <div class="mt-3 text-xl">
+        All of our lettuce is grown hydroponically in our greenhouse. <br>
+        
+      </div>
+      
+    </div>
+    <div class=" h-full w-2/5 hover:shadow-xl mt-5 pl-7">
+    <Video src="/Fensterfarm.video.mp4" controls trackSrc="flowbite.mp4" />
+    <div class="mt-3 text-xl text-center">
+    Here is a tour of our farm
+  </div>
+  </div>
+  
+  </div>
+    
+    
+
+
+    <Card padding="none" size="xl" class="grid md:grid-cols-2 ml-72 mt-8" id="testimonials">
+      <figure class="flex flex-col justify-center items-center p-8 text-center bg-white rounded-t-lg border-b border-gray-200 md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700">
+        <blockquote class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Will never go back to store bought lettuce</h3>
+          <p class="my-4 font-light ml-8">"This is the best lettuce I have ever tasted in my life Love it!!"</p>
+        </blockquote>
+        <figcaption class="flex justify-center items-center space-x-3">
+          <img class="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="Karen profile" />
+          <div class="space-y-0.5 font-medium dark:text-white text-left">
+            <div>Bonnie Green</div>
+
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="flex flex-col justify-center items-center p-8 text-center bg-white rounded-tr-lg border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <blockquote class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white ml-32">Lasted longer than I thought</h3>
+          <p class="my-4 font-light">I buy my lettuce from Fenster Farms and it usually lasts for about 2 weeks!"</p>
+        </blockquote>
+        <figcaption class="flex justify-center items-center space-x-3">
+          <img class="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png" alt="Robert profile" />
+          <div class="space-y-0.5 font-medium dark:text-white text-left">
+            <div>Roberta Casas</div>
+
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="flex flex-col justify-center items-center p-8 text-center bg-white rounded-bl-lg border-b border-gray-200 md:border-b-0 md:border-r dark:bg-gray-800 dark:border-gray-700">
+        <blockquote class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white ml-32">Love supporting local farms </h3>
+          <p class="my-4 font-light">Not only is their lettuce super fresh and tastes amazing, I also love that I can be part in supporting the local farmers."</p>
+        </blockquote>
+        <figcaption class="flex justify-center items-center space-x-3">
+          <img class="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese profile" />
+          <div class="space-y-0.5 font-medium dark:text-white text-left">
+            <div>Jese Leos</div>
+            
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="flex flex-col justify-center items-center p-8 text-center bg-white rounded-b-lg border-gray-200 md:rounded-br-lg dark:bg-gray-800 dark:border-gray-700">
+        <blockquote class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white ml-32">No more Ecoli for this guy</h3>
+          <p class="my-4 font-light">With Fenster Farm lettuce, I have never had to worry about buying bacteria ridden lettuce."</p>
+        </blockquote>
+        <figcaption class="flex justify-center items-center space-x-3">
+          <img class="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png" alt="joseph profile" />
+          <div class="space-y-0.5 font-medium dark:text-white text-left">
+            <div>Joseph McFall</div>
+
+          </div>
+        </figcaption>
+      </figure>
+    </Card>
+    
+  </div>
 </div>
 
-<!-- <div class="carousel carousel-img transition">
-  <img class="carousel-img transition" src={images[currentImage]} alt={`Image ${currentImage + 1}`} />
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Tangerine&family=Patrick+Hand&family=Caveat&display=swap" rel="stylesheet">
 
-  <div class="carousel-buttons">
-    <button class="carousel-button" on:click={previousImage}>&lt;</button>
-    <button class="carousel-button" on:click={nextImage}>&gt;</button>
-  </div>
-</div> -->
-<header class="bg-green-600 text-white p-6 text-center shadow-lg flex justify-between">
-  <h1 class="text-4xl font-semibold text-shadow bg-transparent">
-    Welcome to Fenster Farms!
-  </h1>
-  <a class=" font-semibold rounded-md whitespace-nowrap" href="https://www.youtube.com/@FensterfarmGreenhouse">
-    Our Youtube Channel </a>
-</header>
-
-<main class="container mx-auto my-10 px-6">
+<main class="container mx-auto px-6">
   <section>
-    <h2
-      class="text-4xl font-semibold mb-6 text-center text-green-700 text-shadow"
-    >
-      About Our Farm
-    </h2>
-    <p class="text-xl font-semibold text-white text-center mb-8 text-shadow">
-      At Fenster Farm we grow differently. Hydroponics is our method for
-      growing.
-    </p>
+ 
     <div
-      class="custom-bg rounded-lg p-6 text-center max-w-2xl transition duration-300 ease-in-out hover:shadow-2xl"
+      id="about" class="custom-bg rounded-lg p-6 text-center max-w-2xl transition duration-300 ease-in-out hover:shadow-2xl ml-96 mb-12"
     >
       <h3 class="text-2xl font-semibold mb-4 text-white">Advantages of Hydroponics</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -106,168 +230,192 @@
       </div>
     </div>
   </section>
-  <!-- <div>
-    <a href="https://www.youtube.com/@FensterfarmGreenhouse">
-        <img src="path_to_your_youtube_icon" alt="YouTube Icon" />
-        Learn more about us on our Youtube Channel
-    </a>
-</div> -->
-  <!-- <Gallery>
-    <img src="" alt="">
-</Gallery> -->
+  
 
-  <section class="mt-12">
-    <h2
-      class="text-4xl font-semibold text-center text-green-700 mb-6 text-shadow"
-    >
-      Farmers Markets on Saturday
-    </h2>
-    <table class="table-auto w-full mt-4 bg-white rounded-lg shadow">
-      <thead class="bg-green-500 text-white">
-        <tr>
-          <th class="px-6 py-3">Market</th>
-          <th class="px-6 py-3">Location</th>
-          <th class="px-6 py-3">Time</th>
-        </tr>
-      </thead>
-      <tbody class="text-gray-700">
-     
-
-        <tr class="bg-gray-100">
-          <td class="border px-6 py-4">Agricenter Market</td>
-          <td class="border px-6 py-4"
-            >Agricenter Germantown Pkwy. Memphis TN</td
-          >
-          <td class="border px-6 py-4">8:00 AM - 1:00 PM</td>
-        </tr></tbody
-      >
-    </table>
-  </section>
+  
+    <Table id="marketinfo">
+      <TableHead>
+        <TableHeadCell class="p-8 text-xl" >Market</TableHeadCell>
+        <TableHeadCell class="p-8 text-xl">Time</TableHeadCell>
+        <TableHeadCell class="p-8 text-xl">Location</TableHeadCell>
+        <TableHeadCell class="p-8 text-xl">What we are selling</TableHeadCell>
+      </TableHead>
+      <TableBody class="divide-y" >
+        {#each items as item, i}
+        
+          <TableBodyRow id="hover" on:click={() => toggleRow(i)} >
+            <TableBodyCell class="p-8 text-xl hover:cursor-pointer">{item.market}</TableBodyCell>
+            <TableBodyCell class="p-8 text-xl hover:cursor-pointer">{item.time}</TableBodyCell>
+            <TableBodyCell class="p-8 text-xl hover:cursor-pointer">{item.location}</TableBodyCell>
+            <TableBodyCell class="p-8 text-xl hover:cursor-pointer">{item.goods}</TableBodyCell>
+          </TableBodyRow>
+          <Tooltip triggeredBy="#hover">Click to see more info!</Tooltip>
+          
+          {#if openRow === i}
+            <TableBodyRow on:dblclick={() => (details = item)}>
+              <TableBodyCell colspan="4" class="p-0">
+                <div class="px-2 py-3 flex flex-col-2" transition:slide={{ duration: 300, axis: 'y' }}>
+                  <Img src="/Dadlettuce.jpeg" alt="sample 1" size="max-w-lg" class="rounded-lg" />
+                 <div class="pl-5 text-xl whitespace-normal text-center">
+                  At the Agricenter Farmers Market, we will be selling living lettuce, basil, and microgreens. <br>
+                  All the lettuce is grown hydroponically in our greenhouse. <br> The basil and microgreens are grown in our greenhouse and in our indoor vertical farm.
+                  We are a family owned and operated farm located in Mason, TN. We are dedicated to providing fresh, local produce to the Memphis community.
+                 </div>
+                </div>
+              
+              </TableBodyCell>
+              
+            </TableBodyRow>
+          {/if}
+        {/each}
+      </TableBody>
+    </Table>
+    <Modal title={details?.details} open={!!details} autoclose outsideclose>
+      <Img src="/Dadlettuce.jpeg" size="max-w-lg" alt="My gallery" class="rounded-lg transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" />
+    </Modal>
+  
 
   <section
-    class="mt-12 bg-green-100 p-6 rounded-lg shadow text-center transition duration-300 ease-in-out hover:shadow-xl"
+    class="mt-12 bg-white p-6 rounded-lg shadow text-center transition duration-300 ease-in-out hover:shadow-xl"
   >
-    <h2 class="text-xl font-semibold mb-4">Contact Us</h2>
+    <h2 class="text-xl font-semibold mb-4 text-white" id="contact">Contact Us</h2>
     <form action="/submit-form" method="post" class="max-w-lg mx-auto">
       <div class="mb-4" />
 
-      <div class="mb-4">
-        <label class="block" for="name">Name:</label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3"
-          type="text"
-          id="name"
-          name="name"
-        />
+      <div class="mb-6">
+        <Label for="input-group-1" class="block mb-2">Your name</Label>
+        <Input id="name" type="text" placeholder="John Smith">
+          
+        </Input>
       </div>
-      <div class="mb-4">
-        <label class="block" for="email">Email:</label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3"
-          type="email"
-          id="email"
-          name="email"
-        />
+
+      <div class="mb-6">
+        <Label for="input-group-1" class="block mb-2">Your Email</Label>
+        <Input id="email" type="email" placeholder="JohnSmith@gmail.com">
+          <EnvelopeSolid slot="left" class="w-5 h-5 text-gray-500 dark:text-gray-400" />
+        </Input>
       </div>
-      <div class="mb-4">
-        <label class="block" for="message">Message:</label>
-        <textarea
-          class="shadow appearance-none border rounded w-full py-2 px-3"
-          id="message"
-          name="message"
-        />
-      </div>
-      <button
-        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-200"
-        type="submit">Submit</button
-      >
+
+      <form>
+        <label for="editor" class="sr-only"></label>
+        <Textarea id="editor" rows="8" class="mb-4 border-2" placeholder="Write a comment">
+          <Toolbar slot="header" embedded>
+            <ToolbarGroup>
+              <ToolbarButton name="Attach file"><PaperClipOutline class="w-5 h-5 rotate-45" /></ToolbarButton>
+      
+              <ToolbarButton name="Upload image"><ImageOutline class="w-5 h-5" /></ToolbarButton>
+            </ToolbarGroup>
+            <ToolbarGroup>
+              
+              <ToolbarButton name="Add emoji"><FaceGrinOutline class="w-5 h-5" /></ToolbarButton>
+            </ToolbarGroup>
+      
+          </Toolbar>
+        </Textarea>
+        <Button color="light">Send</Button>
+      </form>
+     
     </form>
   </section>
 </main>
 
-<!-- <div class="max-w-4xl mx-auto">
-    <Carousel>
-        images={images}
-    </Carousel>
-  </div> -->
 
-<!-- <div class="carousel">
-    <img src={images[currentImage]} alt={`Image ${currentImage + 1}`} />
-    
-    <div class="carousel-buttons">
-        <button class="carousel-button" on:click={previousImage}>&lt;</button>
-        <button class="carousel-button" on:click={nextImage}>&gt;</button>
-    </div>
-</div> -->
 
 <footer class="bg-gray-900 text-white text-center p-6 mt-12">
   <p>&copy; 2023 Fenster Farms. All rights reserved.</p>
 </footer>
 
 <style>
-  .background-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    backdrop-filter: blur(10px);
-  }
+
 
   .text-shadow {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
   }
-
-  header {
-    background-color: rgba(0, 128, 0, 0.6);
-    backdrop-filter: blur(1px);
-  }
-
-  h1 {
-  }
-
-  .carousel {
-    position: relative;
-    width: 100%;
-     /* Adjust as needed */
-    margin: auto;
-    width: 100%;
-    object-fit: cover;
-    position: absolute;
-    z-index: -1;
-    transition: 0.5s ease-in-out;
-  }
-  .carousel img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
-    ;
-  }
-    .carousel-img.fade-out {
-        opacity: 0;
-    }
-  .carousel-buttons {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-  }
-  .carousel-button {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-
   .custom-bg {
-    background-color: rgba(128, 128, 128, 0.5); /* Grey with 50% opacity */
+    background: linear-gradient(
+      90deg,
+      rgba(107, 106, 106, 0.8) 0%,
+      rgba(149, 149, 149, 0.8) 100%
+    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .text-xl {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 32px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+  line-height: 1.6;
 }
+.text-md {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 20px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+.text-lg {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 36px;
+  line-height: 1.6;
+  text-align: left;
+}
+.text-2xl {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 48px;
+  line-height: 1.6;
+}
+.text-3xl {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 60px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+.text-4xl {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 72px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+.text-5xl {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 96px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+.text-sm {
+  font-family: 'Amatic SC', cursive;
+  /* or 'Tangerine', cursive; */
+  /* or 'Patrick Hand', cursive; */
+  /* or 'Caveat', cursive; */
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+
 </style>

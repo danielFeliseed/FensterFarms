@@ -11,6 +11,9 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
 		"autoprefixer": "^10.4.16",
+		"flowbite": "^2.2.0",
+		"flowbite-svelte": "^0.44.20",
+		"flowbite-svelte-icons": "^0.4.5",
 		"postcss": "^8.4.31",
 		"svelte": "^4.0.5",
 		"tailwindcss": "^3.3.5",
@@ -21,7 +24,6 @@
 		"@fortawesome/fontawesome-svg-core": "^6.4.2",
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
 		"@fortawesome/svelte-fontawesome": "^0.2.0",
-		"@supabase/supabase-js": "^2.38.4",
-		"flowbite-svelte": "^0.44.19"
+		"@supabase/supabase-js": "^2.38.4"
 	}
 }
