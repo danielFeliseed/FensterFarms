@@ -134,7 +134,7 @@
     <NavBrand href="/">
       <span
         class="self-center whitespace-nowrap text-lg sm:text-3xl font-semibold dark:text-white"
-        >Fenster Farms</span
+        >Fenster Farm</span
       >
     </NavBrand>
     <NavHamburger />
