@@ -428,7 +428,7 @@
           </Toolbar>
         </Textarea>
         <Button type="submit" on:submit= {activateToast} color="light">Send</Button>
-        <input type="hidden" name="_next" value="/">
+        <input type="hidden" name="_next" value="https://fenster-farms.vercel.app/">
       </form>
       {#if showToast}
       <Toast dismissable={false} contentClass="flex space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
