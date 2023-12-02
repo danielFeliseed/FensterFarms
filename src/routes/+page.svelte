@@ -369,6 +369,7 @@
       Contact Us
     </h2>
     <form action="https://formsubmit.co/dfbusinessjp@gmail.com" method="post" class="max-w-lg mx-auto">
+      <input type="hidden" name="_captcha" value="false">
       <div class="mb-4" />
 
       <div class="mb-6">
