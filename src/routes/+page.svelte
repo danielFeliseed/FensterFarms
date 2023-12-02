@@ -420,7 +420,7 @@
             class="w-5 h-5 text-gray-500 dark:text-gray-400"
           />
         </Input>
-        <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!">
+        
     
       </div>
 
@@ -434,6 +434,7 @@
           placeholder="Write a comment"
           required
         >
+        <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!">
           <Toolbar slot="header" embedded>
             <ToolbarGroup>
               <ToolbarButton name="Attach file"
@@ -452,7 +453,6 @@
           </Toolbar>
         </Textarea>
         <Button type="submit" on:submit= {activateToast} color="light">Send</Button>
-        <input type="hidden" name="_next" value="https://fenster-farms.vercel.app/">
       </form>
       {#if showToast}
       <Toast dismissable={false} contentClass="flex space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
