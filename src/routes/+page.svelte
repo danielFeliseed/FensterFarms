@@ -417,7 +417,7 @@
         </Textarea>
         <Button type="submit" on:submit={() => alert='Thank you for your email'} color="light">Send</Button>
       </form>
-    </div>
+    
   </section>
 </main>
 
