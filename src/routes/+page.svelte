@@ -44,10 +44,15 @@
   import { Tooltip } from "flowbite-svelte";
   import { DarkMode } from 'flowbite-svelte';
   import { Toast } from 'flowbite-svelte';
+  import { Banner } from 'flowbite-svelte';
+  import { SalePercentSolid, ArrowRightSolid } from 'flowbite-svelte-icons';
+  import MiniToast from "../lib/components/MiniToast.svelte";
+  import { toast } from '../lib/toast.ts';
 
   let openRow = null;
   let details = null;
   let showToast = false;
+  let form;
   const toggleRow = (i) => {
     openRow = openRow === i ? null : i;
   };
@@ -87,6 +92,16 @@
       alt: "Microgreens",
       caption: "Microgreens",
     },
+    {
+    src: "chickens1.JPG",
+    alt: "Chickens",
+    caption: "Chickens",
+  },
+  {
+    src: "chickens2.JPG",
+    alt: "Chickens",
+    caption: "Chickens",
+  },
   ];
 
 
@@ -97,7 +112,6 @@
       showToast = false;
     }, 3000);
 
-  const form = event.target;
     fetch(form.action, {
       method: form.method,
       body: new FormData(form),
@@ -105,7 +119,10 @@
       .then((response) => {
         if (response.ok) {
           // Form submission was successful
+          toast.show("Message sent successfully.", "success")
+
           console.log('Form submitted successfully');
+
         } else {
           // Form submission failed
           console.error('Form submission failed');
@@ -128,7 +145,7 @@
   href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap"
   rel="stylesheet"
 />
-
+<MiniToast color="black" position="top-right" />
 <div class="w-[425px] sm:w-full relative px-1 sm:px-8 bg-whitesmoke">
   <Navbar class="px-2 sm:px-4 py-2.5 w-[400px] ml-3 fixed sm:w-full z-20 top-0 left-0 border-b">
     <NavBrand href="/">
@@ -147,7 +164,8 @@
       <DarkMode />
     </NavUl>
   </Navbar>
-  <div></div>
+  <MiniToast />
+ 
   <div class="overflow-scroll pb-16">
     <div class="mt-28 mb-5">
       <h1 class="text-lg sm:text-3xl font-bold text-center text-white text-shadow">
@@ -404,7 +422,7 @@
     <h2 class="text-xl font-semibold mb-4 text-white" id="contact">
       Contact Us
     </h2>
-    <form action="https://formsubmit.co/dfbusinessjp@gmail.com" method="post" class="max-w-lg mx-auto">
+    <form action="https://formsubmit.co/dfbusinessjp@gmail.com" method="post" class="max-w-lg mx-auto" bind:this={form}>
       <input type="hidden" name="_captcha" value="false">
       <div class="mb-4" />
     
@@ -439,20 +457,40 @@
         
       </div>
     
-      <Button type="submit" on:submit={activateToast} color="light">Send</Button>
+      <Button type="button" on:click={activateToast} color="light">Send</Button>
     </form>
-      {#if showToast}
+      <!-- {#if showToast}
       <Toast dismissable={false} contentClass="flex space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
         <div class="pl-4 text-sm font-normal">Message sent successfully.</div>
       </Toast>
-      {/if}
+      {/if} -->
+
+     
+      
     
   </section>
+  
 </main>
+
+<Banner id="bottom-banner" position="sticky" bannerType="bottom">
+  <p class="flex items-center text-md font-normal text-gray-500 dark:text-gray-400">
+    <span class="inline-flex p-1 mr-3 bg-gray-200 rounded-full dark:bg-gray-600">
+      <SalePercentSolid class="w-4 h-4 text-gray-500 dark:text-gray-400" />
+      <span class="sr-only">Youtube Channel</span>
+    </span>
+    <span>
+      Check us out on Youtube for more info! <a href="https://www.youtube.com/@FensterfarmGreenhouse" class="flex items-center ml-0 text-md font-medium text-primary-600 md:ml-1 md:inline-flex dark:text-primary-500 hover:underline">
+       Go to channel <ArrowRightSolid class="w-3 h-3 ml-2" />
+      </a>
+    </span>
+  </p>
+</Banner>
+
 
 <footer class="bg-gray-900 text-white text-center p-6 mt-12">
   <p>&copy; 2023 Fenster Farms. All rights reserved.</p>
 </footer>
+
 
 <style>
   .text-shadow {
