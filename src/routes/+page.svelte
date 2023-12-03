@@ -47,7 +47,7 @@
   import { Banner } from 'flowbite-svelte';
   import { SalePercentSolid, ArrowRightSolid } from 'flowbite-svelte-icons';
   import MiniToast from "../lib/components/MiniToast.svelte";
-  import { toast } from '../lib/toast.ts';
+  import { toast } from '$lib/stores.ts' 
 
   let openRow = null;
   let details = null;

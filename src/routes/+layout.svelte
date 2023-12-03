@@ -5,6 +5,6 @@
 
 </script>
 
-<MiniToast {toast} position="bottom-left" />
+<MiniToast {toast} position="top-left" />
 
 <slot />
