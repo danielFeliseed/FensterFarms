@@ -41,7 +41,7 @@
             <InfoSquareFill/>
         {/if}
     </svelte:fragment>
-    <div class="flex flex-col items-start">
+    <div class="flex flex-col items-start text-white">
         {@html $toast.message}
         <br/>
         {#if href}
