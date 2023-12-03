@@ -32,7 +32,7 @@
 </script>
 
 <Toast color={$toast.color} bind:position dismissable
-    bind:open={$toast.show} on:close={handleClose} class="z-[9999] fixed">
+    bind:open={$toast.show} on:close={handleClose} class="z-[9999] fixed bg-gray-600">
 
     <svelte:fragment slot="icon">
         <!-- Insert n Icon component or a <i>, whatever suits you. -->
@@ -44,7 +44,7 @@
             <InfoSquareFill/>
         {/if}
     </svelte:fragment>
-    <div class="flex flex-col items-start">
+    <div class="flex flex-col items-start text-white">
         {@html $toast.message}
         <br/>
         {#if href}
