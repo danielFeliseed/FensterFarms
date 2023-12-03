@@ -42,10 +42,12 @@
   import { Tabs, TabItem } from "flowbite-svelte";
   import { Video } from "flowbite-svelte";
   import { Tooltip } from "flowbite-svelte";
-  import { DarkMode } from "flowbite-svelte";
-  import { Toast } from "flowbite-svelte";
-  import MiniToast from "../lib/MiniToast.svelte";
-  import { toast } from "../lib/stores.ts";
+  import { DarkMode } from 'flowbite-svelte';
+  import { Toast } from 'flowbite-svelte';
+  import { Banner } from 'flowbite-svelte';
+  import { SalePercentSolid, ArrowRightSolid } from 'flowbite-svelte-icons';
+  import MiniToast from "../lib/components/MiniToast.svelte";
+  import { toast } from '../lib/toast.ts';
 
   let openRow = null;
   let details = null;
@@ -92,6 +94,16 @@
       alt: "Microgreens",
       caption: "Microgreens",
     },
+    {
+    src: "chickens1.JPG",
+    alt: "Chickens",
+    caption: "Chickens",
+  },
+  {
+    src: "chickens2.JPG",
+    alt: "Chickens",
+    caption: "Chickens",
+  },
   ];
 
   function activateToast(event) {
@@ -481,11 +493,28 @@
     </form>
     
   </section>
+  
 </main>
+
+<Banner id="bottom-banner" position="sticky" bannerType="bottom">
+  <p class="flex items-center text-md font-normal text-gray-500 dark:text-gray-400">
+    <span class="inline-flex p-1 mr-3 bg-gray-200 rounded-full dark:bg-gray-600">
+      <SalePercentSolid class="w-4 h-4 text-gray-500 dark:text-gray-400" />
+      <span class="sr-only">Youtube Channel</span>
+    </span>
+    <span>
+      Check us out on Youtube for more info! <a href="https://www.youtube.com/@FensterfarmGreenhouse" class="flex items-center ml-0 text-md font-medium text-primary-600 md:ml-1 md:inline-flex dark:text-primary-500 hover:underline">
+       Go to channel <ArrowRightSolid class="w-3 h-3 ml-2" />
+      </a>
+    </span>
+  </p>
+</Banner>
+
 
 <footer class="bg-gray-900 text-white text-center p-6 mt-12">
   <p>&copy; 2023 Fenster Farms. All rights reserved.</p>
 </footer>
+
 
 <style>
   .text-shadow {
