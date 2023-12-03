@@ -42,12 +42,17 @@
   import { Tabs, TabItem } from "flowbite-svelte";
   import { Video } from "flowbite-svelte";
   import { Tooltip } from "flowbite-svelte";
-  import { DarkMode } from 'flowbite-svelte';
-  import { Toast } from 'flowbite-svelte';
+  import { DarkMode } from "flowbite-svelte";
+  import { Toast } from "flowbite-svelte";
+  import MiniToast from "../lib/MiniToast.svelte";
+  import { toast } from "../lib/stores.ts";
 
   let openRow = null;
   let details = null;
   let showToast = false;
+
+  let form;
+
   const toggleRow = (i) => {
     openRow = openRow === i ? null : i;
   };
@@ -89,39 +94,25 @@
     },
   ];
 
-
   function activateToast(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-    showToast = true;
-    setTimeout(() => {
-      showToast = false;
-    }, 3000);
-
-  const form = event.target;
+    
     fetch(form.action, {
       method: form.method,
       body: new FormData(form),
     })
       .then((response) => {
         if (response.ok) {
-          // Form submission was successful
-          console.log('Form submitted successfully');
+          console.log("Form submitted successfully");
+          toast.show('Message sent successfully.','success')
         } else {
-          // Form submission failed
-          console.error('Form submission failed');
+          console.error("Form submission failed");
+          toast.show('Message failed to send. Please try again.','error')
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
-      }); 
-    }
-  
-
-  
-  
-
-  
-
+        console.error("Error:", error);
+      });
+  }
 </script>
 
 <link
@@ -129,8 +120,14 @@
   rel="stylesheet"
 />
 
+
+
+
 <div class="w-[425px] sm:w-full relative px-1 sm:px-8 bg-whitesmoke">
-  <Navbar class="px-2 sm:px-4 py-2.5 w-[400px] ml-3 fixed sm:w-full z-20 top-0 left-0 border-b">
+  
+  <Navbar
+    class="px-2 sm:px-4 py-2.5 w-[400px] ml-3 fixed sm:w-full z-20 top-0 left-0 border-b"
+  >
     <NavBrand href="/">
       <span
         class="self-center whitespace-nowrap text-lg sm:text-3xl font-semibold dark:text-white"
@@ -141,19 +138,26 @@
     <NavUl>
       <NavLi class="text-sm sm:text-xl" href="/" active={true}>Home</NavLi>
       <NavLi class="text-sm sm:text-xl" href="#about">About</NavLi>
-      <NavLi class="text-sm sm:text-xl" href="#testimonials">Customer Testimonials</NavLi>
+      <NavLi class="text-sm sm:text-xl" href="#testimonials"
+        >Customer Testimonials</NavLi
+      >
       <NavLi class="text-sm sm:text-xl" href="#marketinfo">Market Info</NavLi>
       <NavLi class="text-sm sm:text-xl" href="#contact">Contact</NavLi>
       <DarkMode />
     </NavUl>
   </Navbar>
+  
   <div></div>
   <div class="overflow-scroll pb-16">
     <div class="mt-28 mb-5">
-      <h1 class="text-lg sm:text-3xl font-bold text-center text-white text-shadow">
+      <h1
+        class="text-lg sm:text-3xl font-bold text-center text-white text-shadow"
+      >
         Fenster Farm
       </h1>
-      <h2 class="text-lg sm:text-2xl font-semibold text-center text-white text-shadow">
+      <h2
+        class="text-lg sm:text-2xl font-semibold text-center text-white text-shadow"
+      >
         Fresh, Local Produce
       </h2>
     </div>
@@ -164,27 +168,33 @@
           All of our lettuce is grown hydroponically in our greenhouse. <br />
         </div>
       </div>
-      <div class=" h-full ml-9 pl-0 w-5/6 sm:ml-0 sm:w-2/5 sm:mr-12 hover:shadow-xl mt-3">
-        <Video class="border rounded-xl shadow-2xl" src="/Fensterfarm.video.mp4" controls trackSrc="flowbite.mp4" />
-        <div class="mt-3 text-md sm:text-xl text-center">Here is a tour of our farm</div>
+      <div
+        class=" h-full ml-9 pl-0 w-5/6 sm:ml-0 sm:w-2/5 sm:mr-12 hover:shadow-xl mt-3"
+      >
+        <Video
+          class="border rounded-xl shadow-2xl"
+          src="/Fensterfarm.video.mp4"
+          controls
+          trackSrc="flowbite.mp4"
+        />
+        <div class="mt-3 text-md sm:text-xl text-center">
+          Here is a tour of our farm
+        </div>
       </div>
     </div>
 
-    
     <Card
       padding="none"
       size="xl"
       class="grid md:grid-cols-2 sm:ml-12 mt-8"
       id="testimonials"
     >
-    
       <figure
         class="flex flex-col justify-center items-center p-8 text-center bg-white rounded-t-lg border-b border-gray-200 md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700"
       >
         <blockquote
           class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400"
         >
-            
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
             "Will never go back to store bought lettuce"
           </h3>
@@ -209,12 +219,14 @@
         <blockquote
           class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white sm:ml-32">
+          <h3
+            class="text-lg font-semibold text-gray-900 dark:text-white sm:ml-32"
+          >
             "Lasted longer than I thought"
           </h3>
           <p class="my-4 font-light">
-            "I buy my lettuce from Fenster Farms and it usually lasts for about 2
-            weeks!"
+            "I buy my lettuce from Fenster Farms and it usually lasts for about
+            2 weeks!"
           </p>
         </blockquote>
         <figcaption class="flex justify-center items-center space-x-3">
@@ -234,7 +246,9 @@
         <blockquote
           class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white xsm:ml-32">
+          <h3
+            class="text-lg font-semibold text-gray-900 dark:text-white xsm:ml-32"
+          >
             "Love supporting local farms"
           </h3>
           <p class="my-4 font-light">
@@ -259,7 +273,9 @@
         <blockquote
           class="mx-auto mb-4 max-w-2xl text-gray-500 dark:text-gray-400"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white xsm:ml-32">
+          <h3
+            class="text-lg font-semibold text-gray-900 dark:text-white xsm:ml-32"
+          >
             "No more Ecoli for this guy"
           </h3>
           <p class="my-4 font-light">
@@ -298,7 +314,9 @@
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
         <div>
-          <h4 class="font-bold text-lg text-center  sm:text-xl mb-2 text-white">Reduce labor</h4>
+          <h4 class="font-bold text-lg text-center sm:text-xl mb-2 text-white">
+            Reduce labor
+          </h4>
           <p class="text-white">
             Hydroponic systems require no tilling, weeding, heavy-lifting, or
             extensive stooping and kneeling.
@@ -306,14 +324,18 @@
         </div>
 
         <div>
-          <h4 class="font-bold text-lg text-center  sm:text-2xl mb-2 text-white">Reduce water</h4>
+          <h4 class="font-bold text-lg text-center sm:text-2xl mb-2 text-white">
+            Reduce water
+          </h4>
           <p class="text-white">
             Hydroponic systems use significantly less water than soil-based
             farming and allow you to recycle the water you give to your plants.
           </p>
         </div>
         <div>
-          <h4 class="font-bold text-lg text-center sm:text-2xl mb-2 text-white">Protect Year-Round</h4>
+          <h4 class="font-bold text-lg text-center sm:text-2xl mb-2 text-white">
+            Protect Year-Round
+          </h4>
           <p class="text-white">
             Food is typically vulnerable to extreme weather and pests.
             Hydroponic systems can be set up indoors, away from harmful
@@ -334,25 +356,31 @@
   </section>
 
   <Table id="marketinfo" class="w-full overflow-x-auto">
-    <TableHead >
+    <TableHead>
       <TableHeadCell class=" sm:p-8 sm:text-xl">Market</TableHeadCell>
       <TableHeadCell class="sm:p-8 sm:text-xl">Time</TableHeadCell>
       <TableHeadCell class="sm:p-8 sm:text-xl">Location</TableHeadCell>
-      <TableHeadCell class="sm:p-8 sm:text-xl">What we are selling</TableHeadCell>
+      <TableHeadCell class="sm:p-8 sm:text-xl"
+        >What we are selling</TableHeadCell
+      >
     </TableHead>
     <TableBody class="divide-y">
       {#each items as item, i}
         <TableBodyRow id="hover" on:click={() => toggleRow(i)}>
-          <TableBodyCell class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
+          <TableBodyCell
+            class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
             >{item.market}</TableBodyCell
           >
-          <TableBodyCell class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
+          <TableBodyCell
+            class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
             >{item.time}</TableBodyCell
           >
-          <TableBodyCell class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
+          <TableBodyCell
+            class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
             >{item.location}</TableBodyCell
           >
-          <TableBodyCell class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
+          <TableBodyCell
+            class="p-2 text-xs xs:p-8 xs:text-sm hover:cursor-pointer"
             >{item.goods}</TableBodyCell
           >
         </TableBodyRow>
@@ -371,7 +399,9 @@
                   size="w-36 sm:w-1/3"
                   class="rounded-lg"
                 />
-                <div class="pl-1 sm:pl-5 sm:text-xl whitespace-normal text-center">
+                <div
+                  class="pl-1 sm:pl-5 sm:text-xl whitespace-normal text-center"
+                >
                   At the Agricenter Farmers Market, we will be selling living
                   lettuce, basil, and microgreens. <br />
                   All the lettuce is grown hydroponically in our greenhouse.
@@ -381,9 +411,7 @@
                   local produce to the Memphis community.
                 </div>
               </div>
-              
             </TableBodyCell>
-
           </TableBodyRow>
         {/if}
       {/each}
@@ -404,26 +432,36 @@
     <h2 class="text-xl font-semibold mb-4 text-white" id="contact">
       Contact Us
     </h2>
-    <form action="https://formsubmit.co/dfbusinessjp@gmail.com" method="post" class="max-w-lg mx-auto">
-      <input type="hidden" name="_captcha" value="false">
+    <form bind:this={form}
+      action="https://formsubmit.co/dfbusinessjp@gmail.com"
+      method="post"
+      class="max-w-lg mx-auto"
+    >
+      <input type="hidden" name="_captcha" value="false" />
       <div class="mb-4" />
-    
+
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your Name</Label>
-        <input type="hidden" name="_subject" value="Fenster Farm Inquiry">
-        <Input id="name" name=n type="text" placeholder="John Smith"></Input>
+        <input type="hidden" name="_subject" value="Fenster Farm Inquiry" />
+        <Input id="name" name="n" type="text" placeholder="John Smith"></Input>
       </div>
-    
+
       <div class="mb-6">
         <Label for="input-group-1" class="block mb-2">Your Email</Label>
-        <Input id="email" name="email" type="email" placeholder="JohnSmith@gmail.com" required>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="JohnSmith@gmail.com"
+          required
+        >
           <EnvelopeSolid
             slot="left"
             class="w-5 h-5 text-gray-500 dark:text-gray-400"
           />
         </Input>
       </div>
-    
+
       <div class="mb-6">
         <label for="editor" class="sr-only"></label>
         <Textarea
@@ -434,18 +472,13 @@
           placeholder="Write a comment"
           required
         ></Textarea>
-        
+
         <!-- <input type="hidden" name="_autoresponse" value="Thank you for your email! We will get back with you as soon as possible. Have a nice day!"> -->
-        
       </div>
-    
-      <Button type="submit" on:submit={activateToast} color="light">Send</Button>
+
+      <Button type="button" on:click={activateToast} color="light">Send</Button
+      >
     </form>
-      {#if showToast}
-      <Toast dismissable={false} contentClass="flex space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
-        <div class="pl-4 text-sm font-normal">Message sent successfully.</div>
-      </Toast>
-      {/if}
     
   </section>
 </main>
@@ -486,7 +519,6 @@
     font-size: 30px;
     line-height: 1.6;
     color: #333;
-    
   }
   .text-lg {
     font-family: "Amatic SC", cursive;
@@ -495,19 +527,16 @@
     /* or 'Caveat', cursive; */
     font-size: 36px;
     line-height: 1.6;
-   
   }
 
-  
   .text-3xl {
     font-family: "Amatic SC", cursive;
     /* or 'Tangerine', cursive; */
     /* or 'Patrick Hand', cursive; */
     /* or 'Caveat', cursive; */
-   
+
     line-height: 1.6;
     color: #333;
-    
   }
   .text-4xl {
     font-family: "Amatic SC", cursive;
@@ -517,7 +546,6 @@
     font-size: 72px;
     line-height: 1.6;
     color: #333;
-    
   }
   .text-5xl {
     font-family: "Amatic SC", cursive;
