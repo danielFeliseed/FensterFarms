@@ -1,28 +1,38 @@
 <script lang="ts">
     import { Toast } from 'flowbite-svelte';
-    import { toast } from '$lib/toast.ts';
     import { fly } from 'svelte/transition';
     import { onDestroy } from 'svelte';
     import { CheckCircleFill, Fire, InfoSquareFill, Record } from 'svelte-bootstrap-icons';
 
+
     export let href: string | undefined = undefined;
     export let linkText: string | undefined = undefined;
+    export let toast: any = undefined;
 
+    export let duration: number = $toast.duration;
+    export let position: any = $toast.position;
 
     onDestroy(() => {
         $toast.show = false;
     });
 
+    function handleClose() {
+        $toast.show = false;
+        $toast.message = "";
+    }
+
     $: if($toast.show) {
         setTimeout(() =>  {
             $toast.show = false;
-        }, $toast.duration);
+        }, duration);
     }
 
+
+    
 </script>
 
-<Toast color={$toast.color} bind:position={$toast.position}
-    bind:open={$toast.show} on:close={() => $toast.message = ""} class="z-[999]">
+<Toast color={$toast.color} bind:position dismissable
+    bind:open={$toast.show} on:close={handleClose} class="z-[9999] fixed">
 
     <svelte:fragment slot="icon">
         <!-- Insert n Icon component or a <i>, whatever suits you. -->

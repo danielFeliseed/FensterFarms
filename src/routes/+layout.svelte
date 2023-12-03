@@ -1,6 +1,6 @@
 <script>
     import "../app.css";
-    import MiniToast from "../lib/MiniToast.svelte";
+    import MiniToast from "../lib/components/MiniToast.svelte";
     import { toast } from "$lib/stores.ts";
 
 </script>
